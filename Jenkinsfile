@@ -24,14 +24,13 @@ pipeline {
             steps {
                 // Login to Heroku CLI
                 script {
-                    def herokuAuthToken = sh(script: 'heroku auth:token', returnStdout: true).trim()
                     withCredentials([string(credentialsId: 'heroku-auth-token', variable: 'HEROKU_AUTH_TOKEN')]) {
-                        sh "echo $HEROKU_AUTH_TOKEN | base64 --decode > \$HOME/.netrc"
+                        sh "heroku container:login"
                     }
                 }
                 
                 // Deploy to Heroku
-                sh 'git push heroku master'
+                sh 'git push MILESTONE2 master'
             }
         }
     }
