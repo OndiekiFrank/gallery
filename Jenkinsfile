@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/OndiekiFrank/gallery'
             }
         }
-        stag('Build') {
+        stage('Build') {
             steps {
                 // Install Node.js dependencies
                 sh 'npm install'
