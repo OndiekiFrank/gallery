@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Add commands to install required software
+                // Install Node.js dependencies
                 sh 'npm install'
             }
         }
         stage('Deploy') {
             steps {
-                // Add commands to deploy to Render
-                sh 'node server'
+                // Deploy application to Render
+                sh 'render deploy'
             }
         }
     }
