@@ -1,0 +1,5 @@
+authtoken: 2f2QU5CUSSdNnyuNDFn7diAMak4_54kzbb9NT9bYKoQPi7UnM
+tunnels:
+  your_tunnel_name:
+    addr: 3000
+    proto: http

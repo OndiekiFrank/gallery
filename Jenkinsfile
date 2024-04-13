@@ -10,7 +10,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Install Node.js dependencies
-                sh 'npm install'
+                script {
+                    // Set up Node.js environment
+                    def nodeHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${nodeHome}/bin:${env.PATH}"
+
+                    // Install npm dependencies
+                    sh 'npm install'
+                }
             }
         }
         stage('Deploy to Heroku') {
