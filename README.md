@@ -92,6 +92,16 @@ This repository contains the source code for the project "Darkroom". Darkroom is
 3. Push all your changes to the repository.
 4. Ensure that the website visible through Render shows "MILESTONE 2", "MILESTONE 3", and "MILESTONE 4".
 
+## Challenges
+
+### Deployment to Heroku
+One of the challenges I faced during the development of this project was deploying it to Heroku. I encountered issues with authentication and setting up the deployment pipeline correctly. However, with perseverance and some troubleshooting, I was able to successfully deploy the project to Heroku.
+
+### Connecting ngrok Webhook in GitHub
+Another challenge I encountered was connecting ngrok webhook in GitHub. Setting up webhooks and ensuring they work reliably can sometimes be tricky, especially when dealing with external services like ngrok. It required thorough testing and configuration adjustments to establish a stable connection between GitHub and ngrok.
+
+Overall, overcoming these challenges provided valuable learning experiences and improved my understanding of deployment and webhook integration processes.
+
 
 
 
