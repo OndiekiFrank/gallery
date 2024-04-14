@@ -7,16 +7,24 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/OndiekiFrank/gallery'
             }
         }
-        stage('Build') {
+        stage('Install Dependencies and Run Tests') {
             steps {
-                // Install Node.js dependencies
+                // Set up Node.js environment and install dependencies
                 script {
-                    // Set up Node.js environment
                     def nodeHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${nodeHome}/bin:${env.PATH}"
-
-                    // Install npm dependencies
                     sh 'npm install'
+                }
+                // Run tests
+                sh 'npm test'
+            }
+            post {
+                success {
+                    echo 'Tests passed successfully!'
+                }
+                failure {
+                    echo 'Tests failed! Sending email notification...'
+                    // Add code to send email notification
                 }
             }
         }
