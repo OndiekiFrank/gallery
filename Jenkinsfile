@@ -20,18 +20,5 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Heroku') {
-            steps {
-                // Login to Heroku CLI
-                script {
-                    withCredentials([string(credentialsId: 'heroku-auth-token', variable: 'HEROKU_AUTH_TOKEN')]) {
-                        sh "heroku container:login"
-                    }
-                }
-                
-                // Deploy to Heroku
-                sh 'git push MILESTONE2 master'
-            }
-        }
     }
 }
