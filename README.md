@@ -92,9 +92,6 @@ This repository contains the source code for the project "Darkroom". Darkroom is
 3. Push all your changes to the repository.
 4. Ensure that the website visible through Render shows "MILESTONE 2", "MILESTONE 3", and "MILESTONE 4".
 
-## Important Note
-
-Please ensure that all changes are properly tested before merging branches and deploying to production.
 
 
 
