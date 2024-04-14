@@ -34,18 +34,5 @@ pipeline {
                 }
             }
         }
-        
-        stage('Deploy') {
-            steps {
-                // Authenticate with Heroku CLI
-                withCredentials([string(credentialsId: 'HRKU-8ef548af-28a8-48c2-a35b-80d4061794d8', variable: 'HEROKU_API_KEY')]) {
-                    sh 'git config --global user.email "frankline.ondieki@student.moringaschool.com"'
-                    sh 'heroku container:login'
-                }
-                
-                // Push to Heroku
-                sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/pacific-sea-19354.git master'
-            }
-        }
     }
 }
