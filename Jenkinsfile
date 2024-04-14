@@ -44,7 +44,7 @@ pipeline {
                 }
                 
                 // Push to Heroku
-                sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/jenkins.git master'
+                sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/pacific-sea-19354.git master'
             }
         }
     }
