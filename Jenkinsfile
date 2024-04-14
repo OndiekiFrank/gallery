@@ -1,13 +1,15 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Clone Repository') {
+        stage('Git Clone') {
             steps {
                 // Clone code from GitHub repository
                 git branch: 'master', url: 'https://github.com/OndiekiFrank/gallery'
             }
         }
-        stage('Install Dependencies and Run Tests') {
+        
+        stage('Build') {
             steps {
                 // Set up Node.js environment and install dependencies
                 script {
@@ -15,17 +17,29 @@ pipeline {
                     env.PATH = "${nodeHome}/bin:${env.PATH}"
                     sh 'npm install'
                 }
+            }
+        }
+        
+        stage('Test') {
+            steps {
                 // Run tests
                 sh 'npm test'
             }
             post {
-                success {
-                    echo 'Tests passed successfully!'
-                }
                 failure {
-                    echo 'Tests failed! Sending email notification...'
-                    // Add code to send email notification
+                    // Send email notification on test failure
+                    emailext body: 'The tests failed. Please check the Jenkins console output for more details.',
+                             subject: 'Test Failure Notification',
+                             to: 'ondiekifrank021@gmail.com'
                 }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy to Heroku
+                sh 'heroku login -i'
+                sh 'git push heroku master'
             }
         }
     }
