@@ -36,7 +36,7 @@ This repository currently lacks tests, but we'll build our pipeline to automate 
 5. **Verify Deployment**:
    - Check the website deployed via Render to ensure that it displays "MILESTONE 2" prominently on the landing page.
 
-##MILESTONE 3 ##
+ # MILESTONE 3 
 
 ## Introduction
 
@@ -65,6 +65,36 @@ After running the tests locally, you should see test results similar to the scre
 1. Make a change to the landing page of the website.
 2. Add a big "MILESTONE 3" to the site to indicate the milestone.
 3. Ensure that the website visible through Render shows both "MILESTONE 2" and "MILESTONE 3".
+
+# Milestone 4 
+
+## Introduction
+
+This repository contains the source code for the project "Darkroom". Darkroom is a web application for managing photos.
+
+## Slack Integration with Jenkins
+
+### Setting Up Slack Integration
+
+1. Follow the instructions at [Slack Integration Documentation](https://slack.com/intl/en-ke/help/articles/115005265063-Integrate-Jenkins-with-Slack) to integrate Jenkins with Slack.
+2. Create a Slack channel called `YourFirstName_IP1` and invite your TM to it.
+
+### Updating Jenkins Pipeline
+
+1. Update your Jenkins pipeline to send a Slack message on successful deploy.
+2. The message should include the build ID and the link to Render where the site is uploaded.
+3. Utilize environment variables to include dynamic information in the message.
+
+## Website Changes
+
+1. Make a change to the landing page of the website.
+2. Add a big "MILESTONE 3" to the site to indicate the milestone.
+3. Push all your changes to the repository.
+4. Ensure that the website visible through Render shows "MILESTONE 2", "MILESTONE 3", and "MILESTONE 4".
+
+## Important Note
+
+Please ensure that all changes are properly tested before merging branches and deploying to production.
 
 
 
