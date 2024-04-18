@@ -18,9 +18,7 @@ pipeline {
                     sh 'npm install'
                 }
             }
-        }
-        
-        stage('test-project') {
+         stage('test-project') {
             steps {
                 // Run tests
                 sh 'npm test'
@@ -32,5 +30,8 @@ pipeline {
                 }
             }
         }
+        }
+        
+        
     }
 
