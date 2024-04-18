@@ -25,11 +25,6 @@ pipeline {
                 // Run tests
                 sh 'npm test'
             }
-            post {
-                failure {
-                    // If tests fail, no action needed
-                }
-            }
         }
         
         stage('Deploy to Render') {
