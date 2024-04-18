@@ -3,7 +3,7 @@ pipeline {
     
     tools {
         // Specify the Node.js tool installation
-        nodejs 'nodejs'
+        NodeJS 'nodejs'
     }
     
     stages {
