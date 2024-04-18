@@ -27,8 +27,7 @@ pipeline {
             }
             post {
                 failure {
-                    // Send Slack notification on test failure
-                    slackSend(channel: '#yourfirstnameip1', color: 'danger', message: "Test failed")
+                    // If tests fail, no action needed
                 }
             }
         }
@@ -42,16 +41,6 @@ pipeline {
                 
                 // Deploy to Render
                 sh 'render deploy --branch main --localPath . --name gallery'
-            }
-            post {
-                success {
-                    // Send Slack notification on successful deployment
-                    slackSend(channel: '#yourfirstnameip1', color: 'good', message: "Deployment successful. View the site at https://gallery-noc3.onrender.com")
-                }
-                failure {
-                    // Send Slack notification on deployment failure
-                    slackSend(channel: '#yourfirstnameip1', color: 'danger', message: "Deployment failed")
-                }
             }
         }
     }
