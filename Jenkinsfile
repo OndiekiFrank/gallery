@@ -5,14 +5,14 @@ pipeline {
     agent any
     
     stages {
-        stage('Git Clone') {
+        stage('clone-project') {
             steps {
                 // Clone code from GitHub repository
                 git branch: 'master', url: 'https://github.com/OndiekiFrank/gallery'
             }
         }
         
-        stage('Build') {
+        stage('build-project') {
             steps {
                 // Set up Node.js environment and install dependencies
                     sh 'npm install'
@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        stage('test-project') {
             steps {
                 // Run tests
                 sh 'npm test'
