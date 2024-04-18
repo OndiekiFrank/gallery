@@ -12,9 +12,6 @@ pipeline {
         stage('Build') {
             steps {
                 // Set up Node.js environment and install dependencies
-                script {
-                    def nodeHome = tool name: 'NodeJS', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                    env.PATH = "${nodeHome}/bin:${env.PATH}"
                     sh 'npm install'
                 }
             }
@@ -27,10 +24,8 @@ pipeline {
             }
             post {
                 failure {
-                    // Send email notification on test failure
-                    emailext body: 'The tests failed. Please check the Jenkins console output for more details.',
-                             subject: 'Test Failure Notification',
-                             to: 'ondiekifrank021@gmail.com'
+                    slackSend(channel: '#yourfirstnameip1', color: 'danger',
+                                  message: "test failed")
                 }
             }
         }
