@@ -1,8 +1,10 @@
 pipeline {
-    tools{
+    agent any
+    
+    tools {
+        // Specify the Node.js tool installation
         nodejs 'nodejs'
     }
-    agent any
     
     stages {
         stage('clone-project') {
@@ -15,23 +17,21 @@ pipeline {
         stage('build-project') {
             steps {
                 // Set up Node.js environment and install dependencies
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
-         stage('test-project') {
+        }
+        
+        stage('test-project') {
             steps {
                 // Run tests
                 sh 'npm test'
             }
             post {
                 failure {
-                    slackSend(channel: '#yourfirstnameip1', color: 'danger',
-                                  message: "test failed")
+                    // Send Slack notification on test failure
+                    slackSend(channel: '#yourfirstnameip1', color: 'danger', message: "test failed")
                 }
             }
         }
-        }
-        
-        
     }
-
+}
