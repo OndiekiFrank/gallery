@@ -32,5 +32,27 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy to Render') {
+            steps {
+                // Log in to Render
+                withCredentials([usernamePassword(credentialsId: 'render_credentials', passwordVariable: 'RENDER_PASSWORD', usernameVariable: 'RENDER_EMAIL')]) {
+                    sh "render login --email ondiekifrank021@gmail.com --password Utmost37*Frank"
+                }
+                
+                // Deploy to Render
+                sh 'render deploy --branch main --localPath . --name gallery'
+            }
+            post {
+                success {
+                    // Send Slack notification on successful deployment
+                    slackSend(channel: '#yourfirstnameip1', color: 'good', message: "Deployment successful. View the site at https://dashboard.render.com/web/srv-coge47o21fec73d8drj0")
+                }
+                failure {
+                    // Send Slack notification on deployment failure
+                    slackSend(channel: '#yourfirstnameip1', color: 'danger', message: "Deployment failed")
+                }
+            }
+        }
     }
 }
