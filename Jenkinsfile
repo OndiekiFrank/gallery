@@ -46,7 +46,7 @@ pipeline {
             post {
                 success {
                     // Send Slack notification on successful deployment
-                    slackSend(channel: '#yourfirstnameip1', color: 'good', message: "Deployment successful. View the site at https://dashboard.render.com/web/srv-coge47o21fec73d8drj0")
+                    slackSend(channel: '#yourfirstnameip1', color: 'good', message: "Deployment successful. View the site at https://gallery-noc3.onrender.com")
                 }
                 failure {
                     // Send Slack notification on deployment failure
