@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    tools {
-        // Specify the Node.js tool installation
-        NodeJS 'nodejs'
-    }
-    
     stages {
         stage('clone-project') {
             steps {
