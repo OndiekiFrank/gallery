@@ -45,7 +45,7 @@ pipeline {
                     sh 'ls -l bin'
 
                     // Ensure executable has permissions 
-                    sh 'chmod +x bin/render'
+                    sh 'chmod +x bin/render-linux-x86_64'
 
                     sh 'ls -l bin'
 
