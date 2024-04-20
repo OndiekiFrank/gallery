@@ -58,7 +58,7 @@ pipeline {
                 success {
                     script {
                         def buildId = env.BUILD_ID
-                        def renderLink = 'https://gallery2-u5iz.onrender.com/'
+                        def renderLink = 'https://gallery-noc3.onrender.com'
 
                         slackSend(channel: '#yourfirstnameip1', color: 'good',
                                   message: "Deployment successful! Build ID: ${buildId}\nRender Link: ${renderLink}")
