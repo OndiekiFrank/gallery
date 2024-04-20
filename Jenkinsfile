@@ -27,15 +27,37 @@ pipeline {
             }
         }
         
-        stage('Deploy to Render') {
+        stage('Deploy-to-Render') {
             steps {
-                // Log in to Render
-                withCredentials([usernamePassword(credentialsId: 'render_credentials', passwordVariable: 'RENDER_PASSWORD', usernameVariable: 'RENDER_EMAIL')]) {
-                    sh "render login --email ondiekifrank021@gmail.com --password Utmost37*Frank"
+                // Deployment step
+                script {
+                    // Install render-cli
+                    sh 'curl -O https://github.com/render-oss/render-cli/releases/download/v0.1.11/render-linux-x86_64'
+
+                    // Create bin directory in the project's root directory
+                    sh 'mkdir -p bin'
+
+                    // Move render-cli to bin directory 
+                    sh 'mv render-linux-x86_64 bin/'
+
+                    // Ensure executable has permissions 
+                    sh 'chmod +x bin/render'
+
+                    // Deploy your application
+                    sh 'render blueprint launch'
                 }
-                
-                // Deploy to Render
-                sh 'render deploy --branch main --localPath . --name gallery'
+            }
+            // Assuming successful deployment
+            post {
+                success {
+                    script {
+                        def buildId = env.BUILD_ID
+                        def renderLink = 'https://gallery2-u5iz.onrender.com/'
+
+                        slackSend(channel: '#yourfirstnameip1', color: 'good',
+                                  message: "Deployment successful! Build ID: ${buildId}\nRender Link: ${renderLink}")
+                    }
+                }
             }
         }
     }
