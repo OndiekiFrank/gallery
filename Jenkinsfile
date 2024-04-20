@@ -31,8 +31,10 @@ pipeline {
             steps {
                 // Deployment step
                 script {
-                    // Install render-cli
+                    // Replace the original URL with the updated one
                     sh 'curl -O https://github.com/render-oss/render-cli/releases/download/v0.1.11/render-linux-x86_64'
+
+                    sh 'ls -l'
 
                     // Create bin directory in the project's root directory
                     sh 'mkdir -p bin'
@@ -40,11 +42,15 @@ pipeline {
                     // Move render-cli to bin directory 
                     sh 'mv render-linux-x86_64 bin/'
 
+                    sh 'ls -l bin'
+
                     // Ensure executable has permissions 
                     sh 'chmod +x bin/render'
 
-                    // Deploy your application
-                    sh 'render blueprint launch'
+                    sh 'ls -l bin'
+
+                    // Deploy your application with the updated URL
+                    sh 'curl -X POST https://api.render.com/deploy/srv-coge47o21fec73d8drj0?key=xfTK7pCbBmc'
                 }
             }
             // Assuming successful deployment
